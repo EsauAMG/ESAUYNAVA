@@ -1,0 +1,9 @@
+---
+import {site} from '../data/site.js';
+const {demo=false,brand=site.brand}=Astro.props;
+const path=Astro.url.pathname;
+const navigation=[['/','Inicio'],['/proyectos/','Proyectos'],['/demos/','Demos'],['/servicios/','Servicios'],['/paquetes/','Paquetes']];
+---
+<a class="skip" href="#contenido">Saltar al contenido</a>
+{demo&&<div class="demo-banner">Proyecto demostrativo · Marca, precios, dirección y catálogo ficticios · No se realizan operaciones reales.</div>}
+<header><div class="wrap nav"><a class="brand" href="/">{brand}<b>✳</b></a><button class="menu-toggle" aria-expanded="false" aria-controls="navegacion">Menú</button><nav id="navegacion" aria-label="Principal">{demo?<><a href="/demos/">← Volver a las demos</a><a href="#oferta">Explorar</a><a class="btn" href="#contacto">Contactar ↗</a></>:<>{navigation.map(([href,label])=><a href={href} aria-current={path===href?'page':undefined}>{label}</a>)}<a class="btn" href="/contacto/" aria-current={path==='/contacto/'?'page':undefined}>Cotizar mi web ↗</a></>}</nav></div></header>

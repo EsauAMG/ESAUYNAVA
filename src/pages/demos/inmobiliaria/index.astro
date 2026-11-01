@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {realty} from '../../../lib/render.js';
+---
+<BaseLayout title="Hábitat | Demo inmobiliaria" description="Demo inmobiliaria Hábitat: catálogo de propiedades, filtros y fichas con fotografías ilustrativas. Sin inmuebles en oferta ni visitas reales." demo={true} brand="hábitat" bodyClass="demo-page realty"><Fragment set:html={realty()}/></BaseLayout>

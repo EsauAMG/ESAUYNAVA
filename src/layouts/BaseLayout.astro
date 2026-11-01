@@ -1,0 +1,15 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {site} from '../data/site.js';
+import '../styles/global.css';
+const {title,description='Diseño y desarrollo de páginas web para empresas en México.',demo=false,brand,bodyClass='',breadcrumb,noindex=false}=Astro.props;
+const canonical=new URL(Astro.url.pathname,Astro.site).href;
+const origin=new URL('/',Astro.site).href;
+const image=new URL('/assets/social-preview.png',Astro.site).href;
+const hidden=demo||noindex;
+const graph=[{'@type':'WebSite','@id':origin+'#website',url:origin,name:site.brand,inLanguage:'es-MX'},{'@type':Astro.url.pathname==='/contacto/'?'ContactPage':Astro.url.pathname==='/demos/'||Astro.url.pathname==='/proyectos/'?'CollectionPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:'es-MX',isPartOf:{'@id':origin+'#website'}}];
+if(breadcrumb)graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Inicio',item:origin},{'@type':'ListItem',position:2,name:breadcrumb,item:canonical}]});
+const json=JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\u003c');
+---
+<!doctype html><html lang="es-MX"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#20241e"/><meta name="generator" content={Astro.generator}/><title>{title}</title><meta name="description" content={description}/><meta name="robots" content={hidden?'noindex,follow':'index,follow,max-image-preview:large'}/><link rel="canonical" href={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><meta property="og:locale" content="es_MX"/><meta property="og:site_name" content={site.brand}/><meta property="og:image" content={image}/><meta property="og:image:alt" content="Portafolio Trazo de diseño y desarrollo web"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={image}/><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>{!hidden&&<script type="application/ld+json" set:html={json}/>}</head><body class={bodyClass}><Header demo={demo} brand={brand}/><slot/><Footer demo={demo}/><script>import '../scripts/interactions.js';</script></body></html>

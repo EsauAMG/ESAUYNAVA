@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {laundry} from '../../../lib/render.js';
+---
+<BaseLayout title="Brisa | Demo de lavandería" description="Demo de lavandería Brisa: servicios, tarifas, cálculo por kilos y cobertura de ejemplo. Marca ficticia; no se realizan recolecciones reales." demo={true} brand="brisa" bodyClass="demo-page laundry"><Fragment set:html={laundry()}/></BaseLayout>

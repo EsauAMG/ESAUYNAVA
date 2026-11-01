@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {homeHero,homeProjects} from '../lib/sections.js';
+---
+<BaseLayout title="Diseño de páginas web para negocios en México | Trazo" description="Diseño y desarrollo páginas web para negocios en México. Conoce proyectos reales, explora demos por sector y prepara una cotización para tu empresa.">
+ <main id="contenido"><div class="wrap"><Fragment set:html={homeHero()}/><div class="promise"><span>Diseño estratégico</span><span>Experiencia móvil</span><span>Contacto sin complicaciones</span></div>
+ <section class="intro-seo"><span class="eyebrow">Diseño web para empresas en México</span><h2>Una presencia digital que explique lo que haces.</h2><p>Tu sitio debe ayudar a las personas a entender tus servicios, conocer tu trabajo y encontrar cómo contactarte. Diseño y desarrollo páginas adaptadas a tu negocio, desde una presentación esencial hasta un catálogo con filtros.</p><div class="actions"><a class="btn" href="/servicios/">Conocer los servicios ↗</a><a class="btn light" href="/paquetes/">Comparar paquetes</a></div></section>
+ <Fragment set:html={homeProjects()}/>
+ <section class="home-explore"><span class="eyebrow">Encuentra lo que necesitas</span><h2>De la inspiración a tu próxima web.</h2><div class="explore-grid">{[['/demos/','Explora las demos','Restaurante, lavandería e inmobiliaria: experiencias que puedes navegar.'],['/proceso/','Conoce el proceso','Los pasos para definir, diseñar, revisar y publicar tu página.'],['/preguntas-frecuentes/','Resuelve tus dudas','Tiempos, contenido, dominio, alojamiento y mantenimiento.']].map(([href,title,text])=><a href={href} class="explore-card"><h3>{title} ↗</h3><p>{text}</p></a>)}</div></section>
+ <aside class="page-cta"><h2>Tu negocio merece una web a su medida.</h2><p>Empecemos por entender qué necesitas.</p><a class="btn" href="/contacto/">Cuéntame tu proyecto ↗</a></aside></div></main>
+</BaseLayout>

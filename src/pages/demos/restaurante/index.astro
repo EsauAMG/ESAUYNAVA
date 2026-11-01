@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {restaurant} from '../../../lib/render.js';
+---
+<BaseLayout title="Oliva & Fuego | Demo de restaurante" description="Demo de restaurante Oliva & Fuego: menú con precios, horarios y reserva de ejemplo. Marca ficticia; no se aceptan pedidos reales." demo={true} brand="Oliva & Fuego" bodyClass="demo-page restaurant"><Fragment set:html={restaurant()}/></BaseLayout>

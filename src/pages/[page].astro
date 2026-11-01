@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {pages} from '../data/pages.js';
+import {pageSection} from '../lib/sections.js';
+export function getStaticPaths(){return pages.map(page=>({params:{page:page.slug},props:{page}}));}
+const {page}=Astro.props;
+---
+<BaseLayout title={page.title} description={page.description} breadcrumb={page.label}>
+ <main id="contenido" class={'content-page page-'+page.slug}>
+  <div class="wrap"><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">{page.label}</span></nav></div>
+  {page.slug==='demos'||page.slug==='paquetes'?<Fragment set:html={pageSection(page)}/>:<div class="wrap"><Fragment set:html={pageSection(page)}/></div>}
+  {page.slug!=='contacto'&&<div class="wrap"><aside class="page-cta"><h2>Hagamos una web para tu negocio.</h2><p>Cuéntame qué necesitas y definamos el alcance de tu proyecto.</p><a class="btn" href="/contacto/">Solicitar cotización ↗</a></aside></div>}
+ </main>
+</BaseLayout>

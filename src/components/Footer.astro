@@ -1,0 +1,5 @@
+---
+import {site} from '../data/site.js';
+const {demo=false}=Astro.props;
+---
+<footer><div class="wrap"><div class="footer-inner"><a class="brand" href="/">{site.brand}<b>✳</b></a><span>{demo?'Demostración de diseño web · Contenido ficticio':'Diseño con intención. Desarrollo con cuidado.'}</span><span>© 2026 · Marca provisional</span></div><nav class="footer-links" aria-label="Más información"><a href="/proyectos/">Proyectos reales</a><a href="/demos/">Demos</a><a href="/servicios/">Servicios</a><a href="/paquetes/">Paquetes</a><a href="/proceso/">Proceso de trabajo</a><a href="/preguntas-frecuentes/">Preguntas frecuentes</a><a href="/contacto/">Contacto</a></nav></div></footer>
